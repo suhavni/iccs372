@@ -10,11 +10,14 @@ def get_float(string: str):
 def filter_none(iterable):
     return list(filter(lambda x: x is not None, iterable))
 
-file = sys.argv[1]
-f = open(file, "r")
-nums = np.array(filter_none([get_float(line) for line in f.readlines()]))
+try:
+    file = sys.argv[1]
+    f = open(file, "r")
+    nums = np.array(filter_none([get_float(line) for line in f.readlines()]))
+except (IndexError, FileNotFoundError):
+    nums = np.array([])
 
-print("mean: ", np.mean(nums))
-print("std: ", np.std(nums))
-print("min: ", np.min(nums))
-print("max: ", np.max(nums))
+print("mean: ", None if len(nums) == 0 else np.mean(nums))
+print("std: ", None if len(nums) == 0 else np.std(nums))
+print("min: ", None if len(nums) == 0 else np.min(nums))
+print("max: ", None if len(nums) == 0 else np.max(nums))
