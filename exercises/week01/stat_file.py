@@ -17,7 +17,8 @@ def print_summary(nums):
     print("mean: ", run_function(np.mean, nums), end=" ")
     print("std: ", run_function(np.std, nums), end=" ")
     print("min: ", run_function(np.min, nums), end=" ")
-    print("max: ", run_function(np.max, nums))
+    print("max: ", run_function(np.max, nums), end=" ")
+    print("n: ", len(nums))
 
 def get_file_summary(file_name):
     try:
@@ -27,6 +28,7 @@ def get_file_summary(file_name):
         nums = np.array([])
     finally:
         f.close()
+    print(file_name)
     print_summary(nums)
     return nums
 
