@@ -10,11 +10,14 @@ def get_float(string: str):
 def filter_none(iterable):
     return list(filter(lambda x: x is not None, iterable))
 
+def run_function(f, nums):
+    return None if len(nums) == 0 else f(nums)
+
 def print_summary(nums):
-    print("mean: ", None if len(nums) == 0 else np.mean(nums), end=" ")
-    print("std: ", None if len(nums) == 0 else np.std(nums), end=" ")
-    print("min: ", None if len(nums) == 0 else np.min(nums), end=" ")
-    print("max: ", None if len(nums) == 0 else np.max(nums))
+    print("mean: ", run_function(np.mean, nums), end=" ")
+    print("std: ", run_function(np.std, nums), end=" ")
+    print("min: ", run_function(np.min, nums), end=" ")
+    print("max: ", run_function(np.max, nums))
 
 def get_file_summary(file_name):
     try:
